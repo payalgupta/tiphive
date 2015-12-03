@@ -1,1 +1,13 @@
 Ruby version 2.2.2
+
+* Please run rake db:seed to generate sample data that is created via curl commands to display that the POST json requests are working.
+* Ensure that the server is running on port 3000 before seed is run since the data is created using api endpoints.
+* You need to login using one of the following users created using seed
+
+- email: 'john@gmail.com', password: '12345678'
+
+- email: 'rick@gmail.com', password: '12345678'
+
+- email: 'samy@gmail.com', password: '12345678'
+
+* Phone number is not added to User model, email is used to display renter information.

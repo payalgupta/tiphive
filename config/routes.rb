@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    get 'endpoints', to: 'endpoints#index', as: :endpoints
+
     jsonapi_resources :categories
     jsonapi_resources :movies
     jsonapi_resources :loan_entries
