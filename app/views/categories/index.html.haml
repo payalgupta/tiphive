@@ -1,0 +1,14 @@
+%h1 Categories
+
+%table.table
+  %thead
+    %tr
+      %th Category Name
+      %th Movies
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %td= category.name
+        %td 
+          - category.movies.each do |movie|
+            %span= movie.name

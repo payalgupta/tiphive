@@ -1,0 +1,21 @@
+%h1 Movies
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Category
+      %th Type
+      %th Loan
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= link_to movie.name, movie
+        %td= movie.category_name
+        %td= movie.movie_type
+        %td
+          - if movie.rented?
+            = "Rented by #{movie.active_loan_entry.renter_email}"
+          - else
+            = link_to 'Loan this movie', new_movie_loan_entry_path(movie)
+
