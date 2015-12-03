@@ -1,0 +1,16 @@
+%h1 ENDPOINTS - only added some samples
+%h4 
+  Please login to view the links
+  %br
+  email: 'john@gmail.com', password: '12345678'
+  %br
+  email: 'rick@gmail.com', password: '12345678'
+  %br
+  email: 'samy@gmail.com', password: '12345678'
+
+%h5 Other urls can be picked up from the json data
+
+%ul
+  %li= link_to 'My Movies',  api_movies_path, target: :_blank
+  %li= link_to 'Categories', api_categories_path, target: :_blank
+  %li= link_to 'Categories With Movies', api_categories_path(include: 'movies'), target: :_blank
