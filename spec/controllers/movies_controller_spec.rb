@@ -3,16 +3,17 @@ require 'rails_helper'
 RSpec.describe MoviesController, type: :controller do
 
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
+    let (:user) { create(:user) }
 
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+    it 'responds with movies for current_user' do
+      category = create(:category)
+      movie    = user.movies.create({name: 'Legally Blonde', movie_type: :dvd, category_id: category.id})       
+
+      sign_in user
+
+      get :index
+
+      expect(assigns(:movies)).to eq [movie]
     end
   end
 

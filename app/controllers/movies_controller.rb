@@ -1,11 +1,8 @@
 class MoviesController < ApplicationController
-  respond_to :html, :json
   before_action :authenticate_user!
 
   def index
     @movies = current_user.movies.order('name')
-
-    respond_with @movies
   end
 
   def new
@@ -17,14 +14,12 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = current_user.movies.create(movie_params)
-
-    respond_with @movie
+    @movie = Movie.create(movie_params)
   end
 
   private
 
     def movie_params
-      params.require(:movie).permit(:name, :category_id, :movie_type)
+      params.permit(:name, :category_id, :movie_type, :user_id)
     end
 end

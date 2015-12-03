@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  include CanBeSampled
+
   belongs_to :user
   belongs_to :category
   has_many :loan_entries
@@ -13,6 +15,10 @@ class Movie < ActiveRecord::Base
 
   def rented?
     active_loan_entry.present?
+  end
+
+  def renter_email
+    active_loan_entry.renter_email if rented?
   end
 
   def active_loan_entry

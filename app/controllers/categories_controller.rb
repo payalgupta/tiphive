@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @categories = Category.all.includes(:movies)
+    @categories = Category.includes(:movies).all
 
     respond_with @categories
   end
